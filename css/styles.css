@@ -5,7 +5,6 @@
   .row-content {
     margin: 0px auto;
     padding: 50px 0px;
-    border-bottom: 1px ridge;
     min-height: 400px; }
   
   .footer {
@@ -31,4 +30,7 @@
     z-index: 0; }
   
     .navbar-dark {
-        background-color: 510639; }
+        background-color: #510639; 
+    }
+
+  a { color: inherit; } 
