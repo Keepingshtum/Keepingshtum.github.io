@@ -2,35 +2,36 @@
     margin: 0px auto;
     padding: 0px 0px; }
   
-  .row-content {
+.row-content {
     margin: 0px auto;
     padding: 50px 0px;
     min-height: 400px; }
   
-  .footer {
+.footer {
     background-color: #340926;
     color: #F033B4;
     margin: 0px auto;
     padding: 20px 0px; }
   
-  .jumbotron {
+.jumbotron {
     margin: 0px auto;
     padding: 70px 30px;
     background-color: #F033B4;
     color: floralwhite; }
   
-  address {
+address {
     font-size: 80%;
     margin: 0px;
     color: #0f0f0f; }
   
-  body {
+body {
     padding: 50px 0px 0px 0px;
     background-color: #FDDEF3;
     z-index: 0; }
   
-    .navbar-dark {
+.navbar-dark {
         background-color: #510639; 
+        color: #F033B4;
     }
 
-  a { color: inherit; } 
+a { color: inherit; } 
