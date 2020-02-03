@@ -18,7 +18,7 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="Navbar">
-                    <ul class="navbar-nav mr-auto">
+                    <ul class="nav navbar-nav mr-auto">
                         <li class="nav-item active"> <a class="nav-link" href="#"> Home </a> </li>
                         <li class="nav-item"> <a class="nav-link" href="#"> About</a> </li>
                     </ul>
@@ -40,16 +40,26 @@
         </header>
 
         <div class="container">
-            <div class="row row-content">
-                <p>
-                    "Lorem ipsum dolor sit amet, 
-                    consectetur adipiscing elit, 
-                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                    Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-
-                </p>
+                <div class="row row-content formbody-light">
+                    <div class="col">
+                        <p>
+                            Enter your FPL ID to get started!
+                        </p>
+                        
+                        <form>
+                            <div class="form-row">
+                                <div class="form-group col-sm-4">
+                                        <label class="sr-only" for="exampleInputTeamID">Email address</label>
+                                        <input type="text" class="form-control form-control-sm mr-1" id="exampleInputTeamID" placeholder="Team ID">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <button type="submit" class="btn btn-outline-danger btn-sm ml-1">Submit</button>        
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            
 
                 <p>
                     "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,
@@ -105,7 +115,7 @@
     src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
     integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8="
     crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/esm/popper.min.js"></script>
+    <script src="https://getbootstrap.com/docs/4.1/assets/js/vendor/popper.min.js"></script>
     <script>
                 $("#carouselButton").click(function(){
                 if ($("#carouselButton").children("span").hasClass('fa-pause')) {
@@ -120,6 +130,7 @@
                 }
             });
     </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
     <script>
         $("#resbutton").click(function(){
             $('#resModal').modal('show');

@@ -5,7 +5,7 @@
 .row-content {
     margin: 0px auto;
     padding: 50px 0px;
-    min-height: 400px; }
+    min-height: 100px; }
   
 .footer {
     background-color: #340926;
@@ -33,5 +33,9 @@ body {
         background-color: #510639; 
         color: #F033B4;
     }
+.formbody-light
+{
+    background-color: #FDDEF3
+}
 
 a { color: inherit; } 
