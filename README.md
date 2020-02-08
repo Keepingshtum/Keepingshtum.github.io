@@ -6,7 +6,7 @@ Who: I, Anant Shukla, am the only one working on this website :D
 
 What: It's going to be a website for fantasy premier league stuff (as of now)
 
-When: Currently it's just a "Hello World" page, but hopefully it becomes a bit more sightly!
+When: Currently it's just a basic page, but hopefully it becomes a bit more sightly!
 
 Why: It's a good way to practice web design and full stack development!
 
