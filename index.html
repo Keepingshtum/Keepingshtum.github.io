@@ -42,7 +42,7 @@
 
         <div class="container">
                 <div class="row row-content formbody-light">
-                    <div class="col">
+                    <div class="col shadow p-3 mb-5 rounded">
                         <p>
                             Enter your FPL ID to get started!
                         </p>
@@ -54,7 +54,25 @@
                                         <input type="text" class="form-control form-control-sm mr-1" id="exampleInputTeamID" placeholder="Team ID">
                                 </div>
                                 <div class=" form-group">
-                                    <button type="button" class="btn btn-outline-danger btn-sm ml-1">What is my FPL id?</button>
+                                    <button type="button" class="btn btn-outline-danger btn-sm ml-1" data-toggle="modal" data-target="#TeamIDModal">What is my FPL id?</button>
+                                </div>
+                                <div class="modal fade" id="TeamIDModal" tabindex="-1" role="dialog" aria-labelledby="TeamIDModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                      <div class="modal-content">
+                                        <div class="modal-header">
+                                          <h5 class="modal-title" id="TeamIDModalLabel">Finding your FPL ID</h5>
+                                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                          </button>
+                                        </div>
+                                        <div class="modal-body">
+                                          ...
+                                        </div>
+                                        <div class="modal-footer">
+                                          <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Got it!</button>
+                                        </div>
+                                      </div>
+                                    </div>
                                 </div>
                             </div>
                             <div class="form-row">

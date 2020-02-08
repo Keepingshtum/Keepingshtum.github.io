@@ -38,4 +38,16 @@ body {
     background-color: #FDDEF3
 }
 
+.modal-header {
+    background-color: #510639;
+    color: #F033B4; }
+    .modal-header .close {
+      color: #F033B4; }
+  
+  .modal-body {
+    background-color: #FDDEF3; }
+  .modal-footer{
+    background-color: #FDDEF3;
+  }
+
 a { color: inherit; } 
