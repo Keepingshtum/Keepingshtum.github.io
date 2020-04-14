@@ -13,3 +13,5 @@ Why: It's a good way to practice web design and full stack development!
 How: Currently using a combination of HTML+Bootstrap. 
 
 ### Currently on hold as I'm pursuing other projects at the moment. Check back in a few months! (i.e August 2020)
+
+### Update April 14: I've realised Pure HTML is only good to do the front-end, and I'll need some sort of framework to ensure the website actually works. This means learning react/flask and making the website happen with that! So the website will soon be removed and a brand new solution ( a react or a flask app) should take its place on resuming development!
