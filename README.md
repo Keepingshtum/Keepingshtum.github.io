@@ -1,21 +1,50 @@
-# Keepingshtum.github.io
+# React + TypeScript + Vite
 
-Hosts all the various projects I've thought up and promptly abandoned over the years - but hopefully this time I'll get something done!
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Originally was supposed to be a website for FPL stuff:
+Currently, two official plugins are available:
 
-Who: I, Anant Shukla, am the only one working on this website :D
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-What: It's going to be a website for fantasy premier league stuff (as of now)
+## Expanding the ESLint configuration
 
-When: Currently it's just a basic page, but hopefully it becomes a bit more sightly!
+If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
 
-Why: It's a good way to practice web design and full stack development!
+- Configure the top-level `parserOptions` property like this:
 
-How: Currently using a combination of HTML+Bootstrap. 
+```js
+export default tseslint.config({
+  languageOptions: {
+    // other options...
+    parserOptions: {
+      project: ['./tsconfig.node.json', './tsconfig.app.json'],
+      tsconfigRootDir: import.meta.dirname,
+    },
+  },
+})
+```
 
-### Currently on hold as I'm pursuing other projects at the moment. Check back in a few months! (i.e August 2020)
+- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
+- Optionally add `...tseslint.configs.stylisticTypeChecked`
+- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
 
-### Update April 14: I've realised Pure HTML is only good to do the front-end, and I'll need some sort of framework to ensure the website actually works. This means learning react/flask and making the website happen with that! So the website will soon be removed and a brand new solution ( a react or a flask app) should take its place on resuming development!
+```js
+// eslint.config.js
+import react from 'eslint-plugin-react'
 
-
+export default tseslint.config({
+  // Set the react version
+  settings: { react: { version: '18.3' } },
+  plugins: {
+    // Add the react plugin
+    react,
+  },
+  rules: {
+    // other rules...
+    // Enable its recommended rules
+    ...react.configs.recommended.rules,
+    ...react.configs['jsx-runtime'].rules,
+  },
+})
+```
