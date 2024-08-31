@@ -1,3 +1,5 @@
+This is a repo to hold all the weird side projects I've been up to!
+
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
