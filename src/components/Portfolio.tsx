@@ -11,7 +11,6 @@ interface GithubRepo {
   homepage: string | null;
   fork: boolean;
   updated_at: string;
-  topics?: string[];
 }
 
 const getPrimaryLanguageMix = (repos: GithubRepo[]) => {
@@ -26,7 +25,7 @@ const getPrimaryLanguageMix = (repos: GithubRepo[]) => {
 
   return Object.entries(counts)
     .sort((a, b) => b[1] - a[1])
-    .slice(0, 4);
+    .slice(0, 5);
 };
 
 const Portfolio: React.FC = () => {
@@ -63,10 +62,7 @@ const Portfolio: React.FC = () => {
       .slice(0, 6);
 
     const recent = [...repos]
-      .sort(
-        (a, b) =>
-          new Date(b.updated_at).getTime() - new Date(a.updated_at).getTime()
-      )
+      .sort((a, b) => new Date(b.updated_at).getTime() - new Date(a.updated_at).getTime())
       .filter((repo) => !PROFILE.featuredRepoNames.includes(repo.name))
       .slice(0, 6);
 
@@ -119,9 +115,60 @@ const Portfolio: React.FC = () => {
         </div>
       </header>
 
+      <section className="rounded-lg border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-700 dark:bg-gray-800">
+        <h3 className="mb-3 text-xl font-semibold">Publication</h3>
+        {PROFILE.publications.map((paper) => (
+          <article key={paper.url} className="space-y-1">
+            <a
+              href={paper.url}
+              className="text-lg font-semibold text-blue-600 hover:underline dark:text-blue-400"
+              target="_blank"
+              rel="noreferrer"
+            >
+              {paper.title}
+            </a>
+            <p className="text-sm text-gray-600 dark:text-gray-300">
+              {paper.venue} • {paper.year}
+            </p>
+          </article>
+        ))}
+      </section>
+
+      <section className="rounded-lg border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-700 dark:bg-gray-800">
+        <h3 className="mb-3 text-xl font-semibold">Experience highlights</h3>
+        <div className="space-y-4">
+          {PROFILE.experience.map((item) => (
+            <article key={`${item.company}-${item.role}`}>
+              <h4 className="font-semibold">{item.role}</h4>
+              <p className="text-sm text-gray-600 dark:text-gray-300">
+                {item.company} • {item.period}
+              </p>
+              <ul className="mt-1 list-disc pl-5 text-sm text-gray-700 dark:text-gray-200">
+                {item.highlights.map((highlight) => (
+                  <li key={highlight}>{highlight}</li>
+                ))}
+              </ul>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="rounded-lg border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-700 dark:bg-gray-800">
+        <h3 className="mb-3 text-xl font-semibold">Education</h3>
+        <div className="space-y-3">
+          {PROFILE.education.map((item) => (
+            <article key={`${item.school}-${item.degree}`}>
+              <h4 className="font-semibold">{item.school}</h4>
+              <p className="text-sm text-gray-600 dark:text-gray-300">{item.degree}</p>
+              <p className="text-sm text-gray-500 dark:text-gray-400">{item.period}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
       {languageMix.length ? (
         <section>
-          <h3 className="mb-3 text-xl font-semibold">Primary tech stack</h3>
+          <h3 className="mb-3 text-xl font-semibold">Primary tech stack (from GitHub)</h3>
           <div className="flex flex-wrap gap-2">
             {languageMix.map(([language, count]) => (
               <span

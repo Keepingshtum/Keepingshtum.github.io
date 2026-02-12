@@ -22,10 +22,10 @@ If `title` is omitted, the first markdown heading is used as the title.
 
 Update `src/config.ts`:
 
-- `githubUsername`: GitHub user for project auto-discovery.
-- `linkedin.url`: Your public LinkedIn profile URL.
-- `linkedin.headline`, `linkedin.summary`, `location`, `tagline`: Profile intro shown on the portfolio page.
-- `interests`: Topic tags shown under your intro.
-- `featuredRepoNames`: Repository names to pin into the Featured section.
+- `name`, `linkedin.url`, `linkedin.headline`, `linkedin.summary`, `location`, `tagline` for your intro.
+- `experience` and `education` arrays to keep key profile history up to date.
+- `publications` to highlight papers/articles with links.
+- `githubUsername` and `featuredRepoNames` for automatic GitHub project curation.
+- `interests` tags for quick skill/context chips.
 
-The portfolio page automatically sections projects into **Featured**, **Top starred**, and **Recently updated**.
+The portfolio page includes manual curation blocks (publication, experience, education) plus automatic GitHub sections (**Featured**, **Top starred**, **Recently updated**).
