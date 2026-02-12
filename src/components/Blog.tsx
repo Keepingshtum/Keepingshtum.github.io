@@ -1,39 +1,69 @@
-import React, { useEffect, useState } from 'react';
+import React, { useMemo } from 'react';
+import matter from 'gray-matter';
 import BlogPostCard from './BlogPostCard';
 
-
 interface BlogPost {
+  slug: string;
   title: string;
   content: string;
+  date?: string;
 }
 
+const postFiles = import.meta.glob('../content/*.md', {
+  eager: true,
+  query: '?raw',
+  import: 'default',
+}) as Record<string, string>;
+
+const getFallbackTitle = (content: string, slug: string): string => {
+  const headingMatch = content.match(/^#{1,6}\s+(.+)$/m);
+  return headingMatch?.[1]?.trim() || slug;
+};
+
 const Blog: React.FC = () => {
-  const [posts, setPosts] = useState<BlogPost[]>([]);
+  const posts = useMemo<BlogPost[]>(() => {
+    const loadedPosts = Object.entries(postFiles).map(([path, rawContent]) => {
+      const slug = path.split('/').pop()?.replace('.md', '') ?? path;
+      const { data, content } = matter(rawContent);
+      const frontmatterTitle =
+        typeof data.title === 'string' ? data.title.trim() : undefined;
+      const title = frontmatterTitle || getFallbackTitle(content, slug);
+      const date = typeof data.date === 'string' ? data.date : undefined;
 
-  useEffect(() => {
-    const importPosts = async () => {
-      const postFiles = import.meta.glob('../content/*.md');
-      const loadedPosts: BlogPost[] = [];
+      return {
+        slug,
+        title,
+        content,
+        date,
+      };
+    });
 
-      for (const path in postFiles) {
-        const module = await postFiles[path]();
-        //Not sure how good of a practice this is but we'll find out!
-        // Yanked from https://stackoverflow.com/questions/77939951/import-meta-glob-how-to-infer-correct-modules-type-in-typescript
-        // @ts-expect-error - We know that the value is a module
-        const { title, default: content } = module;
-        loadedPosts.push({ title, content });
+    return loadedPosts.sort((a, b) => {
+      if (a.date && b.date) {
+        return new Date(b.date).getTime() - new Date(a.date).getTime();
       }
 
-      setPosts(loadedPosts);
-    };
+      if (a.date) {
+        return -1;
+      }
 
-    importPosts();
+      if (b.date) {
+        return 1;
+      }
+
+      return b.slug.localeCompare(a.slug);
+    });
   }, []);
 
   return (
-    <div>
-      {posts.map((post, index) => (
-        <BlogPostCard key={index} title={post.title} content={post.content} />
+    <div className="space-y-4">
+      {posts.map((post) => (
+        <BlogPostCard
+          key={post.slug}
+          title={post.title}
+          content={post.content}
+          date={post.date}
+        />
       ))}
     </div>
   );
